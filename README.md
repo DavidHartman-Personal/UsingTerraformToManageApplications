@@ -328,7 +328,13 @@ When prompted, type yes and press Enter.
 
 Set up an AWS EC2 instance.  Include AWS cli commands below.
 
-Get AMI id for AWS Instance
+Create alias to ensure dave-personal account is being used.
+
+```bash
+$ export AWS_PROFILE="dave-personal"
+$ alias aws='aws --profile dave-personal --output table'
+
+```
 
 ## Terraform CLI
 
