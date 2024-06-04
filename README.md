@@ -203,16 +203,14 @@ Log in to the lab server using the credentials provided:
 
 `ssh cloud_user@44.204.204.230`
 
-Check the Terraform status using the version command:
-![img_2.png](img_2.png)
+This directory (lab-build-test-basic-module) contains the files and folders needed to complete this lab.
 
-Create a new directory called terraform_project to house your Terraform code:
+* **modules/vpc/main.tf** - Defines resources for creating an AWS VPC and subnet.  It also queries the AWS SSM 
+  parameter 
+  service to get the AMI ID for the latest amazon linux version. 
+* **modules/vpc/variables** - Defines variables used for setting up VPC and Subnet.
+* 
 
-`mkdir terraform_project`
-`cd terraform_project`
-
-`mkdir -p modules/vpc`
-`cd /home/cloud_user/terraform_project/modules/vpc/`
 
 Create a main.tf code file for the VPC module.
 
