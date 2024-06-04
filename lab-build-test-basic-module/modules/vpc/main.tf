@@ -1,30 +1,16 @@
-data "aws_ami" "amazon_linux" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-  }
+provider "aws" {
+  region = var.region
 }
 
-resource "aws_instance" "app" {
-  count = var.instance_count
+resource "aws_vpc" "this" {
+  cidr_block = "10.0.0.0/16"
+}
 
-  ami           = data.aws_ami.amazon_linux.id
-  instance_type = var.instance_type
+resource "aws_subnet" "this" {
+  vpc_id     = aws_vpc.this.id
+  cidr_block = "10.0.1.0/24"
+}
 
-  subnet_id              = var.subnet_ids[count.index % length(var.subnet_ids)]
-  vpc_security_group_ids = var.security_group_ids
-
-  user_data = <<-EOF
-    #!/bin/bash
-    sudo yum update -y
-    sudo yum install httpd -y
-    sudo systemctl enable httpd
-    sudo systemctl start httpd
-    echo "<html><body><div>Hello, world!</div></body></html>" > /var/www/html/index.html
-    EOF
-
-  tags = var.tags
+data "aws_ssm_parameter" "this" {
+  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }

@@ -1,4 +1,7 @@
-output "instance_ids" {
-  description = "IDs of EC2 instances"
-  value       = aws_instance.app.*.id
+output "ami_id" {
+  value = data.aws_ssm_parameter.this.value
+}
+
+output "subnet_id" {
+  value = aws_subnet.this.id
 }

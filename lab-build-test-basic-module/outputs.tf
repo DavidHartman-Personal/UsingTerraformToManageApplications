@@ -1,4 +1,4 @@
-output "public_dns_name" {
-  description = "Public DNS names of the load balancer for this project"
-  value       = module.elb_http.this_elb_dns_name
+output "PrivateIP" {
+  description = "Private IP of EC2 instance"
+  value       = aws_instance.my-instance.private_ip
 }

@@ -50,11 +50,9 @@ referenced by terraform resources that import the VPC module.
 output "ami_id" {
   value = data.aws_ssm_parameter.this.value
 }
-
 output "subnet_id" {
   value = aws_subnet.this.id
 }
-
 ```
 Note: The code in outputs.tf is critical to exporting values to your main Terraform code, where you'll be referencing this module. Specifically, it returns the subnet and AMI IDs for your EC2 instance.
 
