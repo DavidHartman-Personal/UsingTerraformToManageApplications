@@ -123,11 +123,19 @@ Note: The --auto-approve flag will prevent Terraform from prompting you to enter
 
 Once the code has executed successfully, note in the output that 3 resources have been created and the private IP address of the EC2 instance is returned as was configured in the outputs.tf file in your main project code.
 
+output: PrivateIP = "10.0.1.135"
+
 View all the resources that Terraform has created and is now tracking in the state file:
 
 `terraform state list`
 
 The list of resources should include your EC2 instance, which was configured and created by the main Terraform code, and 3 resources with module.vpc in the name, which were configured and created via the module code.
+
+Login to the AWS console to confirm VPC, Subnet and EC2 instance was created.
+
+https://challenge-accepted.signin.aws.amazon.com/console
+
+or run aws cli command to confirm.
 
 ## Destroy/Cleanup
 

@@ -314,7 +314,7 @@ Note: The --auto-approve flag will prevent Terraform from prompting you to enter
 
 Once the code has executed successfully, note in the output that 3 resources have been created and the private IP address of the EC2 instance is returned as was configured in the outputs.tf file in your main project code.
 
-View all of the resources that Terraform has created and is now tracking in the state file:
+View all the resources that Terraform has created and is now tracking in the state file:
 
 `terraform state list`
 The list of resources should include your EC2 instance, which was configured and created by the main Terraform code, and 3 resources with module.vpc in the name, which were configured and created via the module code.
